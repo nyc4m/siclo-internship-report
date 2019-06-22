@@ -1,13 +1,22 @@
-\documentclass{report}
+\documentclass[11pt]{report}
 
 \usepackage{subfiles}
 \usepackage[T1]{fontenc}
 \usepackage[french]{babel}
+
+\usepackage{lib/utt-report-template}
+
 \author{Baptiste Prunot}
 \title{Rapport de Stage\\Siclo}
+\date{\today}
+\schooltutor{Marc Lemercier}
+\branch{ISI}
+\companyname{Siclo Mobile}
+\companyplace{Ho Chi Minh, Vietnam}
+\companytutor{Maxime Pouwels}
 
 \begin{document}
-    \maketitle
+    \frontpage
     \tableofcontents
     \pagebreak
     \subfile{./introduction.tex}
