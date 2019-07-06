@@ -6,5 +6,12 @@
 *.fls
 *.pdf
 *.synctex.gz
+*.glo
+*.ist
+*.dvi
+*.gls
+*.glsdef
+*.glsdefs
+*.glg
 
 
