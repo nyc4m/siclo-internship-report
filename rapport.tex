@@ -5,12 +5,27 @@
 \usepackage[french]{babel}
 \usepackage[T1]{fontenc}
 
-\makeglossaries%
 
+\makeglossaries
+\newglossaryentry{token}
+{%
+    name=token,
+    plural=tokens,
+    description={En français: Jeton, c'est un identifiant contenant parfois des information pour
+    désigner un appareil, un utilisateur, une transaction}
+}
 \newglossaryentry{api}
 {%
     name=API,
     description={Accessible Programming Interface}
+}
+\newglossaryentry{push}
+{%
+    name={notification push},
+    plural={notifications push},
+    description={Informations envoyé depuis un serveur à n'importe quel appareil, 
+    que ce soit mobile ou ordinateur. Cette information est affichée directement 
+à l'utilisateur}
 }
 
 
@@ -24,7 +39,5 @@
     \subfile{siclo/siclo.tex}
     \subfile{stage/stage.tex}
     \chapter{Conclusion}
-    \clearpage
-    \printglossary[title=Glossaire]
     \printglossaries
 \end{document}
