@@ -4,9 +4,19 @@
 \usepackage{subfiles}
 \usepackage[french]{babel}
 \usepackage[T1]{fontenc}
+\usepackage{graphicx}
+
+\graphicspath{{./images/}}
 
 
 \makeglossaries
+\newglossaryentry{framework}
+{%
+    name=framework,
+    plural=frameworks,
+    description={Infrastructure logicielle permettant de structurer son code
+    autour de fonctionnalités déjà développées par d'autre développeurs.}
+}
 \newglossaryentry{token}
 {%
     name=token,

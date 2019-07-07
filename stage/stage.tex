@@ -48,11 +48,28 @@
         Pendant Ce projet, je me suis principalement occupé de mettre en place les \glspl{push}.
         Je n'avais pas de connaissances concernants les \glspl{push}, il a donc fallu que 
         j'apprenne en autonomie le principe de fonctionnement, avec notamment l'enregistrement 
-        des \glspl{token}. On peut trouver deux types de \glpls{token}: ceux de Apple, et de Google.
+        des \glspl{token}. On peut trouver deux types de \glspl{token}: ceux de Apple, et de Google.
         Ceux de apple sont par exemple plus compliqué à utiliser car ils nécessitent la génération 
         de certificats.
 
-        \subsection{SITA Smart ULD}
+            L'api de jobigo a été principalement construite en utilisant php, avec \textit{Api platform}\footnote{https://api-platform.com/} un \gls{framework} permettant de simplifier la conception des \gls{api}.
+
+        \subsection{Smart ULD}
+        Une fois ce projet livré, j'ai été assigné à un autre projet.
+        Le client en question développe un projet permettant de suivre des container
+        à bord des avions, et notamment suivre leur geolocalisation.
+        Pour que ce flux de données soit correctement acheminé, une architecture à base de micro-services
+        avait déjà été prototypée par le client. Le but pour Siclo était donc à
+        partir du prototype, de 
+        redévelopper un ensemble de micro-service un peu plus robustes. Un
+        résumé de l'architecture est disponible figure~\ref{fig:overview}.
+
+        \begin{figure}
+            \centering
+            \includegraphics[scale=0.4]{servicesOverview}
+            \caption{Plan de l'architecture}
+            \label{fig:overview}
+        \end{figure}
 
 
 \end{document}
