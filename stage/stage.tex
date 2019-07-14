@@ -19,9 +19,7 @@
         stage.
 
         \subsection{Deuxième projet}
-        Une fois le premier projet fini, j'ai été assigné à un projet de
-        réécriture de micro service. 
-        Le projet était commandé par SITA, et il fallait reconcevoir l'implémentation
+        Ce projet était commandé par SITA, et il fallait reconcevoir l'implémentation
         de certains micro services sur un de leur projet porté sur les objets
         connectés.
         Ce projet a été l'occasion pour moi de travailler en autonomie, et il a
@@ -129,12 +127,28 @@
         partir du prototype, de 
         redévelopper un ensemble de micro-service un peu plus robustes. Un
         résumé de l'architecture est disponible figure~\ref{fig:overview}.
+        \subsubsection{Technologies utilisées}
+            Ces microservices ont été écrits en nodejs en utilisant typescript.
+            Typescript permet d'écrire du code en javascript en rajoutant la notion de
+            typage sur l'ensemble des variables, ce qui permet d'écrire un code d'une part
+            plus lisible, et d'autre part vérifié par un compilateur. Ce qui en fait un code un
+            plus sûr.
+
+            Tous les services sont liés par des queues RabbitMQ. Une queue
+            fonctionne sur le modèle \gls{fifo}, ce qui permet
+            d'éviter de connecter directement chacun des services. Dans le cas
+            où un des services serait hors ligne, aucun des messages ne serait
+            perdu, ils seraient juste bloqués dans une queue, en attendant
+            d'être lus. En fin de traitement, le service ne fait que poster
+            dans une queue, il n'a pas la responsabilité du transport du
+            message, qui est donc déléguée à RabbitMQ. En début de traitement
+            un autre service n'a qu'à récupérer le premier message disponible
+            dans la queue
 
         \begin{figure}
             \centering
             \includegraphics[scale=0.4]{servicesOverview}
-            \caption{Plan de l'architecture}
-            \label{fig:overview}
+            \caption{Plan de l'architecture}\label{fig:overview}
         \end{figure}
 
         \subsubsection{Decoding Service}
@@ -156,12 +170,40 @@
         \begin{figure}
             \centering
             \includegraphics[scale=0.5]{algo_decoding}
-            \caption{Plan de l'architecture}
-            \label{fig:algo_decoding}
+            \caption{Fonctionnement du decoding}\label{fig:algo_decoding}
         \end{figure}
 
+        \subsubsection{Posting service}
+        Ce service est responsable de poster les données décodées et validées par le decoding service.
+        En fonction du type de message, \textit{THPS} ou \textit{GPS}, les données vont être orienté vers un service différent,
+        comme indiqué dans la figure \ref{fig:overview}. Ce service sert donc principalement d'aiguillage pour les messages,
+        Et est ainsi seulement une application du principe de responsabilité unique que l'on retrouve dans la convention \gls{solid}.
+
+        \subsubsection{Alert threshold service}
+        Juste après le posting service, le message est traité par l'alert threshold service s'il est de type \textit{THPS}.
+        Ce service à la responsabilité de confronter les valeurs contenues dans le message à des valeurs de références contenues dans
+        une base de données. Si l'un des seuils est atteint, une alerte est transmise au notification service.
+
         \subsection{Mynabes}\label{subsec:mynabes}
+        Mynabes est le projet d'une cliente au États-Unis.
+        Cette derniere souhaitait créer une application 
+        permettant de mettre en relation les voisins d'un
+        même quartier.
 
+        Ainsi l'enjeux était de pouvoir créer une application permettant~:
+        \begin{itemize}
+            \item De créer un post à la manière d'un réseau social, décrivant une demande, un service récompensé ou non
+            \item À n'importe qui de pouvoir répondre à 
+                cette demande et de contacter son auteur
+        \end{itemize}
 
+        Ce projet à constitué la moitié de mon stage.
+
+        \subsubsection{Architecture}
+        Le projet a repris la même architecture que pour jobigo présenté à la page \pageref{subsec:jobigo}. On retrouve ainsi un projet côté serveur et l'application mobile en elle même. Le serveur est chargé de traiter les requêtes de l'application, et lui renvoyer les données demander. L'application a elle la charge de mettre en forme les données et fournir nue interface pour l'utilisateur afin qu'il puisse communiquer avec le seveur.
+
+        \subsubsection{Technologies utilisées}
+        Ce projet a été écrit en php, mais avec Laravel, qui est un autre \gls{framework} destiné à construire des projets web.
+        L'application a elle été construite avec ionic, mais comme je n'ai pas participé à cette partie du projet, je ne parlerais pas de son développement.
 
 \end{document}
