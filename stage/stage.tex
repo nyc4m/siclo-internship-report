@@ -98,11 +98,17 @@
             \label{fig:notification}
         \end{figure}
 
-        Un token est simplement un identifiant pour un appareil, un smartphone par exemple. Intuitivement on voudrait pourtant envoyer un message à une addresse qui identifie directement le smartphone d'un utilisateur, comme son addresse IP par exemple. Cependant procéder comme tel introduirait plusieurs problèmes~:
+        Un token est simplement un identifiant pour un appareil, un smartphone
+        par exemple. Intuitivement on voudrait pourtant envoyer un message à
+        une addresse qui identifie directement le smartphone d'un utilisateur,
+        comme son addresse IP par exemple. Cependant procéder comme tel
+        introduirait plusieurs problèmes~:
     \begin{itemize}
-        \item L'IP n'est pas fixe (surtout avec un mobile) : il faudrait garder une trace des changement
-            et forcer l'application à mettre à jour l'addresse IP à chaque changement : \textbf{c'est un traitement lourd}
-        \item Si la sécurité du site est compromise, les addresses IP de tous les utilisateurs sont compromises : \textbf{c'est grave}
+        \item L'IP n'est pas fixe (surtout avec un mobile) : il faudrait garder
+            une trace des changement et forcer l'application à mettre à jour l'addresse IP à chaque
+            changement : \textbf{c'est un traitement lourd}
+        \item Si la sécurité du site est compromise, les addresses IP de tous
+            les utilisateurs sont compromises : \textbf{c'est grave}
     \end{itemize}
         utiliser un token permet de déléguer toute la gestion des notification à un service externe, qui lui s'occupera des deux problèmes
         cités précédemment.
@@ -133,8 +139,19 @@
 
         \subsubsection{Decoding Service}
         C'est le premier service que j'ai dû implémenter. 
-        Les données des divers capteurs arrivent par ce service. Deux types de capteurs sont utilisés, l'un envoit des données de géolocalisation, l'autre envoit des données physique\footnote{température, pression, humidité, choc (shock): THPS.}. Il a alors la charge décoder un message binaire, puis d'en déterminer le type\footnote{GPS ou THPS}. ce service sert principalement à mettre en forme les données en \gls{json}, puis les envoyer à un autre micro-service. dans le cas où les données ne sont pas conformes, les données sont refusés, et le message est ignoré.
-        Le principe de ce service est résumé par l'algorithme e figure \ref{fig:algo_decoding}
+        Les données des divers capteurs arrivent par ce service. Deux types de
+        capteurs sont utilisés, l'un envoit des données de géolocalisation,
+        l'autre envoit des données physique\footnote{température, pression,
+        humidité, choc (shock): THPS.}. Il a alors la charge décoder un message
+        binaire, puis d'en déterminer le type\footnote{GPS ou THPS}. ce service
+        sert principalement à mettre en forme les données en \gls{json}, puis
+        les envoyer à un autre micro-service. dans le cas où les données ne
+        sont pas conformes, les données sont refusés, et le message est ignoré.
+        Le principe de ce service est résumé par l'algorithme la figure
+        \ref{fig:algo_decoding}.
+        En sortie du micro-service, il ne faut pas trouver de données
+        incohérentes, qui viendrait alors 
+        polluer la base de données.
 
         \begin{figure}
             \centering
