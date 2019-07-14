@@ -133,7 +133,7 @@
 
         \subsubsection{Decoding Service}
         C'est le premier service que j'ai dû implémenter. 
-        Les données des divers capteurs arrivent par ce service. Deux types de capteurs sont utilisés, l'un envoit des données de géolocalisation, l'autre envoit des données physique\footnote{température, pression, humidité, choc (shock): THPS.}. Il a alors la charge décoder un message binaire, puis d'en déterminer le type\footnote{GPS ou THPS}. ce service sert principalement à mettre en forme les données en \gls{JSON}, puis les envoyer à un autre micro-service. dans le cas où les données ne sont pas conformes, les données sont refusés, et le message est ignoré.
+        Les données des divers capteurs arrivent par ce service. Deux types de capteurs sont utilisés, l'un envoit des données de géolocalisation, l'autre envoit des données physique\footnote{température, pression, humidité, choc (shock): THPS.}. Il a alors la charge décoder un message binaire, puis d'en déterminer le type\footnote{GPS ou THPS}. ce service sert principalement à mettre en forme les données en \gls{json}, puis les envoyer à un autre micro-service. dans le cas où les données ne sont pas conformes, les données sont refusés, et le message est ignoré.
         Le principe de ce service est résumé par l'algorithme e figure \ref{fig:algo_decoding}
 
         \begin{figure}
