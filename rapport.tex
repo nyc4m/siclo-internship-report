@@ -1,15 +1,55 @@
 \documentclass[11pt]{report}
 
-\usepackage{glossaries}
+
 \usepackage{subfiles}
 \usepackage[french]{babel}
 \usepackage[T1]{fontenc}
 \usepackage{graphicx}
+\usepackage[percent]{overpic}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{changepage}
+\usepackage{glossaries}
+\usepackage{wrapfig}
+\usepackage{biblatex}
+
+\addbibresource{sources.bib}
 
 \graphicspath{{./images/}}
 
+\definecolor{uttBlue}{RGB}{29,16,128}
+
+\renewcommand{\familydefault}{\sfdefault}
 
 \makeglossaries
+
+\newglossaryentry{url}
+{%
+    name=URL,
+    description={Unique Resource Locator, permet généralement d'indiquer où une ressource est située sur un serveur}
+}
+\newglossaryentry{pattern}
+{%
+    name={design pattern},
+    description={collection de bonnes pratiques de conception en génie logiciel}
+}
+\newglossaryentry{ux}
+{%
+    name={UX},
+    description={\og User Experience\fg, la discipline qui vise à améliorer le plus possible l'utilisation d'une application, d'un logiciel pour qu'elle soit agréable pour l'utilisateur}
+}
+\newglossaryentry{cont}
+{%
+    name={container},
+    description={Environment virtuel qui permet d'isoler un programme, un service, pendant son exécution.
+    Le programme aura ainsi son propre environement}
+}
+\newglossaryentry{prod}
+{%
+    name={serveur de production},
+    description={Serveur qui sera utilisé par le client}
+}
+{
 \newglossaryentry{fifo}
 {
     name=FIFO,
@@ -57,28 +97,36 @@
 \newglossaryentry{api}
 {%
     name=API,
-    description={Accessible Programming Interface}
+    description={Accessible Programming Interface, ce sont toutes les actions
+    et les données que l'on souhaite exposer de manière publique}
 }
+
 \newglossaryentry{push}
 {%
     name={notification push},
     plural={notifications push},
-    description={Informations envoyé depuis un serveur à n'importe quel appareil, 
+    description={Informations envoyées depuis un serveur à n'importe quel appareil, 
     que ce soit mobile ou ordinateur. Cette information est affichée directement 
 à l'utilisateur}
 }
 
 
-\author{Baptiste Prunot}
-\title{Rapport de Stage\\Siclo}
 \begin{document}
-    \maketitle
+    \subfile{./title.tex} 
+    \setlength{\parskip}{0.3cm}
+    \subfile{./remerciement.tex}
+    \setlength{\parskip}{0.0cm}
+    \pagebreak
     \tableofcontents
     \pagebreak
+
+    %From now on, add spacing to paragraphs
+    \setlength{\parskip}{0.3cm}
     \subfile{./introduction.tex}
-    \subfile{siclo/siclo.tex}
-    \subfile{stage/stage.tex}
-    \subfile{deroulement/deroulement.tex}
-    \chapter{Conclusion}
+    \subfile{./siclo.tex}
+    \subfile{./stage.tex}
+    \subfile{./projets.tex}
+    \subfile{./conclusion.tex}
     \printglossaries
+    \printbibliography
 \end{document}

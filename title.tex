@@ -1,0 +1,88 @@
+\documentclass[rapport.tex]{subfiles}
+
+\begin{document}
+\begin{titlepage}
+        \newgeometry{left=1cm, right=1cm, top=1cm, bottom=0.5cm}
+        \centering
+        \begin{overpic}[scale=0.41,tics=5]{first-page-background}
+            \color{white}
+            \put(10,40){\Huge{\textbf{Développement et maintenance}}}
+            \put(10,35){\Huge{\textbf{d'applications côté serveur}}}
+            \put(10, 25) {\LARGE{\textbf{Baptiste Prunot}}}
+            \put(10, 15) {\Large{\textbf{Responsable Pédagogique UTT~:~}}}
+            \put(10, 11) {\Large{Marc Lemercier}}
+            \put(55, 25) {\Large{\textbf{Branche~:~} ISI}}
+            \put(55, 15) {\Large{\textbf{Semestre~:~} Printemps 2019}}
+        \end{overpic}
+
+        \vspace{0.5cm}
+
+        \begin{center}
+        \LARGE{Résumé}
+    \end{center}
+
+    \begin{adjustwidth}{2cm}{2cm}
+            Durant mon stage à Siclo Mobile, j'ai eu l'occasion de travailler sur trois
+            applications côté serveur.
+            L'enjeu pour ces trois projets était de :
+            \begin{itemize}
+                \item définir une API pour permettre à une application
+                    de pouvoir communiquer avec un serveur afin de récupérer des données
+                    ou en créer.
+                \item définir des microservices afin de d'effectuer un traitement continu sur 
+                    un flux de données provenant d'objets connectés.
+            Ces projets ont été développés en utilisant deux langages populaires du web: php et nodejs.
+            \end{itemize}
+    \end{adjustwidth}
+
+    \vspace{1cm}
+
+    \begin{adjustwidth}{0.5cm}{1cm}
+    \fcolorbox{uttBlue}{white}{%
+        \begin{minipage}[c][4cm]{0.45\textwidth}
+        \color{uttBlue}
+        \vspace{0.5cm}
+        \textbf{Entreprise} : Siclo Mobile
+
+        \vspace{0.75cm}
+
+        \textbf{Lieu }: Hô-Chi-Minh-Ville
+
+        \vspace{0.75cm}
+
+        \textbf{Responsable}: Maxime Pouwels
+
+        \vspace{0.75cm}
+    \end{minipage}
+    }
+    \hspace{0.2cm}
+    \fcolorbox{uttBlue}{uttBlue}{%
+        \begin{minipage}[c][4cm]{0.45\textwidth}
+        \color{white}
+        \vspace{0.2cm}
+        \centering
+        \Large{\textbf{\textcolor{white}{Mots clés}}}
+        \vspace{0.2cm}
+        \begin{itemize}
+            \item Conception, Mise au point
+            \item Transport et télécommunication
+            \item Génie logiciel
+            \item Gestion - Logiciels
+        \end{itemize}
+        \vspace{0.75cm}
+    \end{minipage}
+}
+    \end{adjustwidth}
+
+    \begin{adjustwidth}{0cm}{0cm}
+    \begin{minipage}[b][5cm]{0.5\textwidth}
+        \includegraphics[width=6cm]{UTT}
+    \end{minipage}
+    \hspace{5cm}
+    \begin{minipage}[b][5cm]{0.5\textwidth}
+        \includegraphics[width=4cm]{siclo_original}
+    \end{minipage}
+    \end{adjustwidth}
+\end{titlepage}
+
+\end{document}
